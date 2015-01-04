@@ -1,0 +1,81 @@
+{% block html_head_container %}
+    {% include 'html-header.twig' %}
+    {% block head %}
+    {% endblock %}
+    </head>
+{% endblock %}
+<body class="{{ body_class }}" data-template="base.twig">
+
+<header>
+    {% block header %}
+        <!-- Starting the Top-Bar -->
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="{{ site.url }}"
+                           title="{{ site.name }}"
+                           rel="home">{{ site.name }}</a></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <ul>
+                    {% for item in menu.get_items %}
+                        <li class="nav-main-item {{item.classes | join(' ')}}"><a class="nav-main-link" href="{{item.get_link}}">{{item.title}}</a>
+                            {% if item.get_children %}
+                                <ul class="nav-drop">
+                                    {% for child in item.get_children %}
+                                        <li class="nav-drop-item"><a href="{{child.get_link}}">{{child.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    <li class="has-dropdown">
+                        <a href="#">Right Button Dropdown</a>
+                        <ul class="dropdown">
+                            <li><a href="#">First link in dropdown</a></li>
+                            <li class="active"><a href="#">Active link in dropdown</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+        <!-- End of Top-Bar -->
+    {% endblock %}
+</header>
+
+<!-- Start the main container -->
+<section class="container" role="document">
+    <div class="row">
+        {% if title %}<h1>{{ title }}</h1>{% endif %}
+        <div class="wrapper {{ sidebar_class }}">
+            {% block content %}
+                Sorry, no content
+            {% endblock %}
+        </div>
+        {% if sidebar %}
+            <aside class="layout-sidebar">
+                {{ sidebar }}
+            </aside>
+        {% endif %}
+
+
+        {% block footer %}
+            <footer id="footer">
+                {% include 'footer.twig' %}
+            </footer>
+            {{ function('wp_footer') }}
+        {% endblock %}
+    </div>
+</section>
+
+
+<script>
+    (function ($) {
+        $(document).foundation();
+    })(jQuery);
+</script>
+</body>
+</html>
