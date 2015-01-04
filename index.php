@@ -1,29 +1,26 @@
-<?php get_header(); ?>
+<?php
+	/**
+	 * The main template file
+	 * This is the most generic template file in a WordPress theme
+	 * and one of the two required files for a theme (the other being style.css).
+	 * It is used to display a page when nothing more specific matches a query.
+	 * E.g., it puts together the home page when no home.php file exists
+	 *
+	 * Methods for TimberHelper can be found in the /functions sub-directory
+	 *
+	 * @package 	WordPress
+	 * @subpackage 	Timber
+	 * @since 		Timber 0.1
+	 */
 
-<!-- Row for main content area -->
-	<div class="small-12 large-8 columns" id="content" role="main">
-	
-	<?php if ( have_posts() ) : ?>
-	
-		<?php /* Start the Loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', get_post_format() ); ?>
-		<?php endwhile; ?>
-		
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		
-	<?php endif; // end have_posts() check ?>
-	
-	<?php /* Display navigation to next/previous pages when applicable */ ?>
-	<?php if ( function_exists('reverie_pagination') ) { reverie_pagination(); } else if ( is_paged() ) { ?>
-		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'reverie' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'reverie' ) ); ?></div>
-		</nav>
-	<?php } ?>
-
-	</div>
-	<?php get_sidebar(); ?>
-		
-<?php get_footer(); ?>
+	if (!class_exists('Timber')){
+		echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
+		return;
+	}
+	$context = Timber::get_context();
+	$context['posts'] = Timber::get_posts();
+	$templates = array('index.twig');
+	if (is_home()){
+		array_unshift($templates, 'home.twig');
+	}
+	Timber::render($templates, $context);

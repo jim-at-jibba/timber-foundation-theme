@@ -1,32 +1,14 @@
-	</div><!-- Row End -->
-</div><!-- Container End -->
+<?php
+	/*
+	 * Third party plugins that hijack the theme will call wp_footer() to get the footer template.
+	 * We use this to end our output buffer (started in header.php) and render into the view/page-plugin.twig template.
+	 */
+	$timberContext = $GLOBALS['timberContext'];
+	if (!isset($timberContext)) {
+		throw new \Exception('Timber context not set in footer.');
+	}
+	$timberContext['content'] = ob_get_contents();
+	ob_end_clean();
+	$templates = array('page-plugin.twig');
+	Timber::render($templates, $timberContext);
 
-<div class="full-width footer-widget">
-	<div class="row">
-		<?php dynamic_sidebar("Footer"); ?>
-	</div>
-</div>
-
-<footer class="full-width" role="contentinfo">
-	<div class="row">
-		<div class="large-12 columns">
-			<?php wp_nav_menu(array('theme_location' => 'utility', 'container' => false, 'menu_class' => 'inline-list')); ?>
-		</div>
-	</div>
-	<div class="row love-reverie">
-		<div class="large-12 columns">
-			<p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. <?php _e('Made with Love in','reverie'); ?> <a href="http://themefortress.com/reverie/" rel="nofollow" title="Reverie Framework">Reverie</a>.</p>
-		</div>
-	</div>
-</footer>
-
-<?php wp_footer(); ?>
-
-<script>
-	(function($) {
-		$(document).foundation();
-	})(jQuery);
-</script>
-	
-</body>
-</html>
