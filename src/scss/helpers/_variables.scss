@@ -1,0 +1,100 @@
+/*************************************************************************************
+* Global variables
+*************************************************************************************/
+
+//----------------------------------*\
+// Typography
+//----------------------------------*/
+$base-font-family: $helvetica;
+$header-font-family: $base-font-family;
+
+//----------------------------------*\
+// Font Sizes
+//----------------------------------*/
+$base-font-size: 1em;
+$h1-font-size: $base-font-size * 2.25;
+$h2-font-size: $base-font-size * 2;
+$h3-font-size: $base-font-size * 1.75;
+$h4-font-size: $base-font-size * 1.5;
+$h5-font-size: $base-font-size * 1.25;
+$h6-font-size: $base-font-size;
+
+//----------------------------------*\
+// Line height
+//----------------------------------*/
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
+//----------------------------------*\
+// Other Sizes
+//----------------------------------*/
+$base-border-radius: 15px;
+$base-spacing: $base-line-height * 1em;
+$base-z-index: 0;
+
+//----------------------------------*\
+// Breakpoints
+//----------------------------------*/
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+$small-only: max-width 40em;
+/* min-width 641px, medium screens */
+$medium-up: 40.063em;
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+$medium-only: 40.063em 64em;
+/* min-width 1025px, large screens */
+$large-up:64.063em;
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+$large-only: 64.063em 90em;
+/* min-width 1441px, xlarge screens */
+$xlarge-up: 90.063em;
+/* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+$xlarge-only:90.063em 120em;
+/* min-width 1921px, xxlarge screens */
+$xxlarge-up: 120.063em;
+
+//----------------------------------*\
+// Colors
+//----------------------------------*/
+$blue: #00a3e8;
+$red: #ec0500  ;
+$dark-gray: #333;
+$medium-gray: #717f80;
+$light-gray: #f3f3f3;
+
+//----------------------------------*\
+// Background Color
+//----------------------------------*/
+$base-background-color: white;
+
+//----------------------------------*\
+// Font Colors
+//----------------------------------*/
+$base-font-color: $dark-gray;
+$base-accent-color: $blue;
+
+//----------------------------------*\
+// Link Colors
+//----------------------------------*/
+$base-link-color: $base-accent-color;
+$hover-link-color: darken($base-accent-color, 15);
+$base-button-color: $base-link-color;
+$hover-button-color: $hover-link-color;
+
+//----------------------------------*\
+// Border color
+//----------------------------------*/
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+//----------------------------------*\
+// Forms
+//----------------------------------*/
+$form-border-color: $base-border-color;
+$form-border-color-hover: darken($base-border-color, 10);
+$form-border-color-focus: $base-accent-color;
+$form-border-radius: $base-border-radius;
+$form-box-shadow: inset 0 1px 3px rgba(black,0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
+$form-font-size: $base-font-size;
+$form-font-family: $base-font-family;
+
