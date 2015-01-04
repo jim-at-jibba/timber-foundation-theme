@@ -16,11 +16,12 @@ var targetjsDir = 'js';
     gulp.task('scripts', function () {
         gulp.src([
                 bowerDir + '/foundation/js/foundation.min.js',
-                bowerDir + '/flexslider/jquery.flexslider-min.js',
+                bowerDir + '/slick-carousel/slick/slick.min.js',
+                bowerDir + '/lightbox2/js/lightbox.min.js',
                 jsDir + '/app.js'
             ])
             .pipe(concat('script.js'))
-            .pipe(stripDebug())
-            .pipe(uglify())
+            //.pipe(stripDebug())
+            //.pipe(uglify())
             .pipe(gulp.dest(targetjsDir));
     });
