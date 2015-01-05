@@ -65,7 +65,23 @@
 		}
 	}
 	add_action('after_setup_theme', 'underwood_theme_support'); /* end Reverie theme support */
-	
+
+	$sidebars = array('Sidebar');
+	foreach ($sidebars as $sidebar) {
+		register_sidebar(array('name'=> $sidebar,
+		                       'id' => 'Sidebar',
+		                       'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
+		                       'after_widget' => '</article>',
+		                       'before_title' => '<h4>',
+		                       'after_title' => '</h4>'
+		));
+	}
+
+
+	/**
+	 * Timber Specific Functions
+	 */
+
 	add_filter('timber_context', 'add_to_context');
 	function add_to_context($data){
 		/* So here you are adding data to Timber's context object, i.e... */

@@ -17,10 +17,22 @@
 		echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
 		return;
 	}
+	//$context = array();
 	$context = Timber::get_context();
 	$context['posts'] = Timber::get_posts();
+
+	/* Dynamic Sidebar */
+	$context['sidebar'] = Timber::get_widgets('Sidebar');
+
+//	$sidebar_context = array();
+//	$sidebar_context['related'] = Timber::get_posts('cat='.$post_cat);
+//	$context['sidebar'] = Timber::get_sidebar('sidebar-related.twig', $sidebar_context);
+
 	$templates = array('index.twig');
 	if (is_home()){
 		array_unshift($templates, 'home.twig');
 	}
 	Timber::render($templates, $context);
+
+
+

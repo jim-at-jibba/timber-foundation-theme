@@ -5,65 +5,72 @@
     </head>
 {% endblock %}
 <body class="{{ body_class }}" data-template="base.twig">
-
-<header>
-    {% block header %}
-        <!-- Starting the Top-Bar -->
-        <nav class="top-bar" data-topbar>
-            <ul class="title-area">
-                <li class="name">
-                    <h1><a href="{{ site.url }}"
-                           title="{{ site.name }}"
-                           rel="home">{{ site.name }}</a></h1>
-                </li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-            </ul>
-            <section class="top-bar-section">
-                <ul>
-                    {% for item in menu.get_items %}
-                        <li class="nav-main-item {{item.classes | join(' ')}} {% if item.get_children %}has-dropdown{% endif %}"><a class="nav-main-link" href="{{item.get_link}}">{{item.title}}</a>
-                            {% if item.get_children %}
-                                <ul class="dropdown">
-                                    {% for child in item.get_children %}
-                                        <li class="nav-drop-item"><a href="{{child.get_link}}">{{child.title}}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
+<div class="region-wrap top-bar">
+    <header>
+        {% block header %}
+            <!-- Starting the Top-Bar -->
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <h1><a href="{{ site.url }}"
+                               title="{{ site.name }}"
+                               rel="home">{{ site.name }}</a></h1>
+                    </li>
+                    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
                 </ul>
-            </section>
-        </nav>
-        <!-- End of Top-Bar -->
-    {% endblock %}
-</header>
+                <section class="top-bar-section">
+                    <ul>
+                        {% for item in menu.get_items %}
+                            <li class="nav-main-item{{ item.classes | join(' ') }} {% if item.current %}active{% endif %} {% if item.get_children %}has-dropdown{% endif %}">
+                                <a class="nav-main-link" href="{{ item.get_link }}">{{ item.title }}</a>
+                                {% if item.get_children %}
+                                    <ul class="dropdown">
+                                        {% for child in item.get_children %}
+                                            <li class="nav-drop-item {% if child.current %}active{% endif %}"><a
+                                                        href="{{ child.get_link }}">{{ child.title }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </nav>
+            <!-- End of Top-Bar -->
+        {% endblock %}
+    </header>
+</div>
 
-<!-- Start the main container -->
-<section class="container" role="document">
-    <div class="row">
-        {% if title %}<h1>{{ title }}</h1>{% endif %}
-        <div class="wrapper {{ sidebar_class }}">
-            {% block content %}
-                Sorry, no content
-            {% endblock %}
+{#START main contianer#}
+<div class="region-wrap main-content">
+    <section role="document">
+        <div class="row">
+            {% if title %}<h1>{{ title }}</h1>{% endif %}
+
+                {% block content %}
+                    Sorry, no content
+                {% endblock %}
+
         </div>
-        {% if sidebar %}
-            <aside class="layout-sidebar">
-                {{ sidebar }}
-            </aside>
-        {% endif %}
+        {#/.row#}
+    </section>
+</div>
+{#/.main-content#}
 
-
+{#START footer container#}
+<div class="region-wrap footer">
+    <div class="row">
         {% block footer %}
-            <footer id="footer">
+            <footer>
                 {% include 'footer.twig' %}
             </footer>
             {{ function('wp_footer') }}
         {% endblock %}
     </div>
-</section>
-
+    {#/.row#}
+</div>
+{#/.footer#}
 
 <script>
     (function ($) {

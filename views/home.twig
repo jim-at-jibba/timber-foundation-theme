@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="small-12 large-8 columns">
+        {% for post in posts %}
+            {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+
+        {% endfor %}
+    </div> <!-- /content-wrapper -->
+
+    {% if sidebar %}
+    <aside class="large-4 columns my-sidebar">
+        {% include ['sidebar.twig'] %}
+    </aside>
+    {% endif %}
+
+{% endblock %}
+
+

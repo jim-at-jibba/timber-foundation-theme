@@ -1,3 +1,4 @@
-<aside id="sidebar" class="small-12 large-4 columns">
-	<?php dynamic_sidebar("Sidebar"); ?>
-</aside><!-- /#sidebar -->
+<?php
+//$context = array();
+//$context['sidebar'] = Timber::get_widgets('sidebar');
+//Timber::render('sidebar.twig', $context);
