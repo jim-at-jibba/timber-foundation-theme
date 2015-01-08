@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-12 large-8 columns">
+            {% for post in posts %}
+                {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+            {% endfor %}
+
+            {#START Pagnination#}
+            {% if pagination %}
+                <ul class="pagination">
+                    {% if pagination.prev %}
+                        <li>
+                            <a href="{{ pagination.prev.link }}"
+                               class="arrow prev {{ pagination.prev.link|length ? '' : 'invisible' }}">&laquo;</a>
+                        </li>
+                    {% endif %}
+                    {% for page in pagination.pages %}
+                        {% if page.link %}
+                            <li>
+                                <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                            </li>
+                        {% else %}
+                            <li class="{{ page.class }}">
+                                <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if pagination.next %}
+                        <li>
+                            <a href="{{ pagination.next.link }}"
+                               class="arrow next {{ pagination.next.link|length ? '' : 'invisible' }}">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+            {#END Pagnination#}
+        </div>
+        {% if sidebar %}
+            <aside class="large-4 columns my-sidebar">
+                {% include ['sidebar.twig'] %}
+            </aside>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+

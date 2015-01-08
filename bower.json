@@ -1,10 +1,10 @@
 {
-  "name": "static-boilerplate",
+  "name": "underwood-wordpress-theme",
   "version": "0.0.1",
   "authors": [
-    "James Best <jimgbest@jibbadesign.co.uk>"
+    "James Best <jim@justjibba.net>"
   ],
-  "description": "Bolierplate to quickly start static projects, includes Foundation, SCSS, Gulp",
+  "description": "Starter wordpress theme, includes Foundation, SCSS, Gulp, Twig",
   "keywords": [
     "Foundation",
     "Gulp",
