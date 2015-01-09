@@ -12,6 +12,9 @@ global $wp_query;
 
 $data = Timber::get_context();
 $data['posts'] = Timber::get_posts();
+$data['pagination'] = Timber::get_pagination();
+/* Dynamic Sidebar */
+$data['sidebar'] = Timber::get_widgets( 'Sidebar' );
 if (isset($wp_query->query_vars['author'])){
 	$author = new TimberUser($wp_query->query_vars['author']);
 	$data['author'] = $author;
