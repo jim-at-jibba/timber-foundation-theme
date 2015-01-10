@@ -10,4 +10,8 @@
  */
 
 	$context = Timber::get_context();
+
+	/* Dynamic Sidebar */
+	$context['sidebar'] = Timber::get_widgets( 'Sidebar' );
+
 	Timber::render('404.twig', $context);
