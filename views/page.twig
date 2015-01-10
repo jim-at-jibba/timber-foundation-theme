@@ -15,5 +15,10 @@
 
         </article>
     </div> <!-- /content-wrapper -->
+    {% if sidebar %}
+        <aside class="large-4 columns my-sidebar">
+            {% include ['sidebar.twig'] %}
+        </aside>
+    {% endif %}
 
 {% endblock %}
