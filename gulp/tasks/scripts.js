@@ -23,5 +23,9 @@ var targetjsDir = 'js';
             .pipe(concat('script.js'))
             //.pipe(stripDebug())
             //.pipe(uglify())
+            .pipe(notify({
+            title: 'Success',
+            message: 'Your scripts have compiled successfully'
+            }))
             .pipe(gulp.dest(targetjsDir));
     });
