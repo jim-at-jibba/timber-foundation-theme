@@ -18,22 +18,22 @@ All contributions are welcome!
 
 Back in the days we wrote all styles in the style.css file. Then we realized that this could quickly create clutter and confusion, especially in larger projects. Foundation uses SASS (equivalent to LESS, used in Bootstrap). In short, SASS is a CSS pre-processor that allows you to write styles more effectively and tidy. 
 
-To compile SASS files into one style sheet, we use a tool called Grunt. In short, Grunt is a task runner that automates repetitive tasks like minification, compilation, linting, etc. Grunt and Grunt plugins are installed and managed via npm, the Node.js package manager. Before setting up Grunt ensure that your npm is up-to-date by running ```npm update -g npm``` (this might require ```sudo``` on certain systems)
+To compile SASS files into one style sheet, we use a tool called Grunt. In short, Grunt is a task runner that automates repetitive tasks like minification, compilation, linting, etc. Gulp and Gulp plugins are installed and managed via npm, the Node.js package manager. Before setting up Gulp ensure that your npm is up-to-date by running ```npm update -g npm``` (this might require ```sudo``` on certain systems)
 
-Bower is a package manager used by Zurb to distribute Foundation. When you have Bower installed, you will be able to run ```bower update``` in the terminal to update Foundation to the latest version. (After an upgrade you must run ```grunt build``` to recompile files).
+Bower is a package manager used by Zurb to distribute Foundation. When you have Bower installed, you will be able to run ```bower update``` in the terminal to update Foundation to the latest version. (After an upgrade you must run ```gulp``` to recompile files).
 
 
 **Okay, so you'll need to have the following items installed before continuing.**
 
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
-  * [Gulp](http://gulpjs.com/): Run `[sudo] npm install --save gulp-install`
+  * [Gulp](http://gulpjs.com/): Run `[sudo] npm install --global gulp`
   * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
 
 ## Quickstart
 
 ```bash
 cd my-wordpress-folder/wp-content/themes/
-git https://github.com/jim-at-jibba/timber-foundation-theme.git
+git clone https://github.com/jim-at-jibba/timber-foundation-theme.git
 mv timber-foundation-theme your-theme-name
 cd your-theme-name
 npm install && bower install && gulp
@@ -52,9 +52,9 @@ Check for Updates? Run:
 
   * `style.css`: Do not worry about this file. (For some reason) it's required by WordPress. All styling are handled in the Sass files described below
 
-  * Rest coming soon
+  * Coming Soon 
 
-### Script Folder Strucutre
+### Script Folder Structure
   
   * `bower_components/`: This is the source folder where all Foundation components are located. `bower update` will check and update scripts in this folder.
 
@@ -86,6 +86,8 @@ Pull requests are highly appreciated. Here are some guidelines to help:
 * [WordPress Codex](http://codex.wordpress.org/)
 * [Timber](https://github.com/jarednova/timber/wiki)
 * [Twig](http://twig.sensiolabs.org/)
+* [Slick Carousel](http://kenwheeler.github.io/slick/)
+* [Lightbox 2](http://lokeshdhakar.com/projects/lightbox2/)
 
 
 
