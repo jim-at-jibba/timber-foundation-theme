@@ -2,6 +2,7 @@ var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
 var gulp = require('gulp');
+var notify = require('gulp-notify');
 
 // Where do you store your Bower files?
 var bowerDir = 'bower_components';
