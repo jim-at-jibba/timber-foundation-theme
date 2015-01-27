@@ -20,9 +20,10 @@ gulp.task('styles', function () {
             errLogToConsole: true
         })).on('error', handleErrors)
         .pipe(sourcemaps.write('./maps'))
-        .pipe(notify({
-            title: 'Success',
-            message: 'Your styles have compiled successfully'
-        }))
+        // Notify does not work on windows machine.
+        // .pipe(notify({
+        //     title: 'Success',
+        //     message: 'Your styles have compiled successfully'
+        // }))
         .pipe(gulp.dest(targetCSSDir));
 });

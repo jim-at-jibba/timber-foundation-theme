@@ -9,9 +9,10 @@ gulp.task('images', function() {
 	return gulp.src('./src/img/**')
 		.pipe(changed(dest)) // Ignore unchanged files
 		.pipe(imagemin()) // Optimize
+        .pipe(notify({
+                title: 'Success',
+                message: 'Your styles have compiled successfully'
+            }))
 		.pipe(gulp.dest(dest));
-		.pipe(notify({
-	            title: 'Success',
-	            message: 'Your styles have compiled successfully'
-	        }))
+
 });
