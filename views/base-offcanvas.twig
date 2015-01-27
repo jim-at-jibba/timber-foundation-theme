@@ -1,0 +1,144 @@
+{% block html_head_container %}
+    {% include 'html-header.twig' %}
+    {% block head %}
+    {% endblock %}
+    </head>
+{% endblock %}
+<body class="{{ body_class }}" data-template="base.twig">
+<div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+        <nav class="tab-bar show-for-medium-down">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
+
+            <section class="middle tab-bar-section">
+                <h1 class="title">{{ site.name }}</h1>
+            </section>
+
+            <section class="right-small">
+                <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label>{{ site.name }}</label></li>
+                {% for item in left_off_canvas.get_items %}
+                    <li class="nav-main-item{{ item.classes | join(' ') }} {% if item.current %}active{% endif %} {% if item.get_children %}has-submenu{% endif %}">
+                        <a class="nav-main-link" href="{{ item.get_link }}">{{ item.title }}</a>
+                        {% if item.get_children %}
+                            <ul class="left-submenu">
+                                <li class="back"><a href="#">Back</a></li>
+                                <li><label>Level 1</label></li>
+                                {% for child in item.get_children %}
+                                    <li class="nav-drop-item {% if child.current %}active{% endif %}"><a
+                                                href="{{ child.get_link }}">{{ child.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label>{{ sites.name }}</label></li>
+                {% for item in right_off_canvas.get_items %}
+                    <li class="nav-main-item{{ item.classes | join(' ') }} {% if item.current %}active{% endif %} {% if item.get_children %}has-submenu{% endif %}">
+                        <a class="nav-main-link" href="{{ item.get_link }}">{{ item.title }}</a>
+                        {% if item.get_children %}
+                            <ul class="right-submenu">
+                                <li class="back"><a href="#">Back</a></li>
+                                <li><label>Level 1</label></li>
+                                {% for child in item.get_children %}
+                                    <li class="nav-drop-item {% if child.current %}active{% endif %}"><a
+                                                href="{{ child.get_link }}">{{ child.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+
+
+        <div class="region-wrap topbar contain-to-grid show-for-large-up">
+            <header>
+                {% block header %}
+                    <!-- Starting the Top-Bar -->
+                    <nav class="top-bar" data-topbar>
+                        <ul class="title-area">
+                            <li class="name">
+                                <h1><a href="{{ site.url }}"
+                                       title="{{ site.name }}"
+                                       rel="home">{{ site.name }}</a></h1>
+                            </li>
+                        </ul>
+                        <section class="top-bar-section">
+                            <ul>
+                                {% for item in menu.get_items %}
+                                    <li class="nav-main-item{{ item.classes | join(' ') }} {% if item.current %}active{% endif %} {% if item.get_children %}has-dropdown{% endif %}">
+                                        <a class="nav-main-link" href="{{ item.get_link }}">{{ item.title }}</a>
+                                        {% if item.get_children %}
+                                            <ul class="dropdown">
+                                                {% for child in item.get_children %}
+                                                    <li class="nav-drop-item {% if child.current %}active{% endif %}"><a
+                                                                href="{{ child.get_link }}">{{ child.title }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    </nav>
+                    <!-- End of Top-Bar -->
+                {% endblock %}
+            </header>
+        </div>
+
+        {#START main contianer#}
+        <div class="region-wrap main-content">
+            <section role="document">
+                <div class="row">
+                    {% if title %}<h1>{{ title }}</h1>{% endif %}
+
+                    {% block content %}
+                        Sorry, no content
+                    {% endblock %}
+
+                </div>
+                {#/.row#}
+            </section>
+        </div>
+        {#/.main-content#}
+
+        {#START footer container#}
+        <div class="region-wrap footer">
+            <div class="row">
+                {% block footer %}
+                    <footer>
+                        {% include 'footer.twig' %}
+                    </footer>
+                    {{ function('wp_footer') }}
+                {% endblock %}
+            </div>
+            {#/.row#}
+        </div>
+        {#/.footer#}
+
+        <a class="exit-off-canvas"></a>
+
+    </div>
+</div>
+
+
+<script>
+    (function ($) {
+        $(document).foundation();
+    })(jQuery);
+</script>
+</body>
+</html>
