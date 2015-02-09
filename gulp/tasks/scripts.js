@@ -22,8 +22,8 @@ var targetjsDir = 'js';
                 jsDir + '/app.js'
             ])
             .pipe(concat('script.js'))
-            //.pipe(stripDebug())
-            //.pipe(uglify())
+            .pipe(stripDebug())
+            .pipe(uglify())
             // Notify does not work on windows machine.
             /*.pipe(notify({
             title: 'Success',
