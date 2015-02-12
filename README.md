@@ -65,7 +65,7 @@ Check for Updates? Run:
 
 ## Demo
 
-* COMING SOON
+* [Visit the Underwood Site for a demo](http://underwood.justjibba.net)
 
 ## How to make Foundation your own
 * [Learn to use the _settings file to change almost every aspect of a Foundation site](http://zurb.com/university/lessons/66)
