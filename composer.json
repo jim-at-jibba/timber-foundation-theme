@@ -1,0 +1,12 @@
+{
+	"name": "jim-at-jibba/timber-foundation-theme",
+	"type": "wordpress-theme",
+	"description": "Foundation 5 Wordpress Starter theme with using Timber",
+	"keywords": ["timber", "twig", "themes", "templating", "foundation"],
+	"homepage": "http://underwood.justjibba.net/",
+	"support": {
+		"issues": "https://github.com/jim-at-jibba/timber-foundation-theme/issues",
+		"wiki": "https://github.com/jim-at-jibba/timber-foundation-theme/wiki",
+		"source": "https://github.com/jim-at-jibba/timber-foundation-theme"
+	}
+}
