@@ -5,6 +5,12 @@ var gulp         = require('gulp');
 var notify       = require('gulp-notify');
 var handleErrors = require('../util/handleErrors');
 
+var includePaths = [
+    'bower_components/foundation/scss',
+    'bower_components/bourbon/app/assets/stylesheets',
+    'bower_components/font-awesome/scss'
+];
+
 // Where do you store your Sass files?
 var sassDir = 'src/scss';
 
@@ -16,7 +22,8 @@ gulp.task('styles', function () {
     gulp.src(sassDir + '/main.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({
-            style: 'compressed',
+            includePaths: includePaths,
+            outputStyle: 'compressed',
             errLogToConsole: true
         })).on('error', handleErrors)
         .pipe(sourcemaps.write('./maps'))
