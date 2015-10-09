@@ -36,6 +36,14 @@
 		- timber specific functions
 	*/
 	require_once( 'lib/timber_specific.php' );
+	
+
+	/*
+	 6. lib/filters.php - https://codex.wordpress.org/Function_Reference/add_filter
+	- add custom filters
+	*/
+	require_once( 'lib/filters.php' );
+	
 
 
 
