@@ -6,8 +6,8 @@
   {% set large  = function('wp_get_attachment_image_src', post.ID, 'large')[0] %}
   <div class="columns gallery-image">
     <a href="{{ url }}">
-      <img data-interchange="[$medium, (default)], [{{ small }}, (small)], [{{ medium }}, (medium)], [{{ large }}, (large)]">
-      <noscript><img src="$medium"></noscript>
+      <img data-interchange="[{{ medium }}, (default)], [{{ small }}, (small)], [{{ medium }}, (medium)], [{{ large }}, (large)]">
+      <noscript><img src="{{ medium }}"></noscript>
     </a>
   </div>
   {% endfor %}
