@@ -1,0 +1,14 @@
+<div class="row">
+  {% for post in posts %}
+  {% set url = function('get_permalink', post.ID) %}
+  {% set small  = function('wp_get_attachment_image_src', post.ID, 'small')[0] %}
+  {% set medium = function('wp_get_attachment_image_src', post.ID, 'medium')[0] %}
+  {% set large  = function('wp_get_attachment_image_src', post.ID, 'large')[0] %}
+  <div class="columns gallery-image">
+    <a href="{{ url }}">
+      <img data-interchange="[{{ medium }}, (default)], [{{ small }}, (small)], [{{ medium }}, (medium)], [{{ large }}, (large)]">
+      <noscript><img src="{{ medium }}"></noscript>
+    </a>
+  </div>
+  {% endfor %}
+</div>
